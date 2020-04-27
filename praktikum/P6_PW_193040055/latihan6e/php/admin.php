@@ -53,12 +53,12 @@ if (isset($_GET['cari'])) {
   <div class="row"></div>
   <div class="row">
     <div class="col s3"></div>
-    <div class="col s5 brown lighten-1">
+    <div class="col s5 brown lighten-2">
       <form action="" method="GET">
-        <input type="text" name="keyword" size="50" autofocus placeholder="Masukan keyword yang anda cari" autocomplete="off">
+        <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off">
     </div>
     <div class="col s2">
-      <button class="btn brown lighten-1" type="submit" name="cari">Cari!</button>
+      <button class="btn brown lighten-2" type="submit" name="cari">Cari!</button>
     </div>
     </form>
   </div>
@@ -82,7 +82,7 @@ if (isset($_GET['cari'])) {
       <?php if (empty($pakaian)) : ?>
         <tr>
           <td colspan="5">
-            <h1>Data tidak ditemukan</h1>
+            <h3>Data tidak ditemukan</h3>
           </td>
         </tr>
       <?php else : ?>

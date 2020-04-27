@@ -13,7 +13,7 @@ function query($sql)
     $conn = koneksi();
     $result = mysqli_query($conn, "$sql");
 
-    $row = [];
+    $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
