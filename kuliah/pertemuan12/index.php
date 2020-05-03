@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['login'])) {
+  header('Location: login.php');
+  exit;
+}
+
 require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
 
@@ -31,9 +39,10 @@ if (isset($_POST['cari'])) {
 <body>
   <div class="utama center">
     <h3 class="center">Daftar Mahasiswa</h3>
-
-    <button class="btn waves-effect grey lighten-2"><a href="tambah.php">Tambah Data Mahasiswa</a></button>
-    <br><br>
+    <div class="center">
+      <button class="btn waves-effect grey lighten-3"><a href="tambah.php">Tambah Data Mahasiswa</a></button>
+      <button class="btn waves-effect grey lighten-2"><a href="logout.php">LOGOUT</a></button>
+    </div>
 
     <div class="row"></div>
     <div class="row">
