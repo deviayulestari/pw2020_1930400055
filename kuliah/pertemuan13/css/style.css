@@ -1,0 +1,49 @@
+/* halaman detail.php */
+.detail .container {
+  margin : 50px;
+  background-color: #f5f5f5;
+  height: 520px;
+  width: 850px;
+}
+
+.detail .header{
+  font-family: Kaushan Script;
+  padding-top: 35px;
+}
+
+.detail .card{
+  margin: 50px;
+  height: 350px;
+  margin-top: 25px;
+}
+
+.detail .card-content{
+  font-family: Libre Baskerville;
+  font-size: 20px;
+}
+
+/* halaman tambah.php */
+.tambah{
+  background-color: #f5f5f5;
+  height: 600px;
+  width: 850px;
+  padding: 25px;
+  margin: 30px;
+}
+
+.tambah h3{
+  font-family: Kaushan Script;
+}
+
+/* halaman utama (index.php) */
+.utama h3{
+  font-family: Kaushan Script;
+  font-size: 50px;
+}
+
+.utama table{
+  margin: 20px auto 50px auto;
+  width: 1000px;
+  background-color:  #f5f5f5;
+}
+
