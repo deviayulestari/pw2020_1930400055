@@ -58,6 +58,27 @@ section{
   height: 250px;
 }
 
+/* payment */
+.parallax-container {
+	height: 30%;
+}
+
+.parallax img{
+  filter: blur(2px);
+  height: 1200px;
+}
+
+.container-payment h3{
+  filter: drop-shadow(2px 2px 2px rgba(26,13,0,0.8));
+  font-family: kaushan script;
+}
+
+.container-payment img {
+  max-width: 130px;
+  max-height: 80px;
+	filter: drop-shadow(2px 2px 2px rgba(255,217,179,0.8));
+}
+
 /* footer */
 .footer-copyright h5{
   font-family: Libre Baskerville;

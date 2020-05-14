@@ -128,6 +128,47 @@ if (isset($_GET['cari'])) {
   </section>
   <!-- akhir product -->
 
+  <!-- payment -->
+  <section id="payment" class="parallax-container scrollspy">
+    <div class="parallax"><img src="assets/img/bg_parallax/parallax.jfif"></div>
+
+    <div class="container-payment">
+      <h3 class="center red-text text-accent-2">Payment partners</h3>
+      <div class="row">
+        <div class="col m2 s12 center">
+          <img src="assets/img/payment_partners/bri.png">
+        </div>
+        <div class="col m2 s12 center">
+          <img src="assets/img/payment_partners/bca.png">
+        </div>
+        <div class="col m2 s12 center">
+          <img src="assets/img/payment_partners/mandiri.png">
+        </div>
+        <div class="col m2 s12 center">
+          <img src="assets/img/payment_partners/bjb.png">
+        </div>
+        <div class="col m2 s12 center">
+          <img src="assets/img/payment_partners/bni.png">
+        </div>
+        <div class="col m2 s12 center">
+          <img src="assets/img/payment_partners/btn.png">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m4 s12 center">
+          <img src="assets/img/payment_partners/indomaret.png">
+        </div>
+        <div class="col m4 s12 center">
+          <img src="assets/img/payment_partners/alfamidi.png">
+        </div>
+        <div class="col m4 s12 center">
+          <img src="assets/img/payment_partners/alfamart.png">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- akhir payment -->
+
   <!-- footer -->
   <footer class="page-footer brown darken-4 ">
     <div class="footer-copyright">
@@ -154,6 +195,9 @@ if (isset($_GET['cari'])) {
       transition: 600,
       interval: 3000
     });
+
+    const parallax = document.querySelectorAll('.parallax');
+    M.Parallax.init(parallax);
   </script>
 
 </body>
