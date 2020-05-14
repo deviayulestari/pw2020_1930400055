@@ -3,19 +3,11 @@
 require 'php/functions.php';
 
 //melakukan query
-$rows = query("SELECT * FROM pakaian");
+$pakaian = query("SELECT * FROM pakaian");
 
-if (isset($_GET['cari'])) {
-  $keyword = $_GET['keyword'];
-  $pakaian = query("SELECT * FROM pakaian WHERE
-              foto LIKE '%$keyword%' OR
-              nama_produk LIKE '%$keyword%' OR
-              brand LIKE '%$keyword%' OR
-              ukuran LIKE '%$keyword%' OR
-              warna LIKE '%$keyword%' OR
-              stok_tersedia LIKE '%$keyword%' OR
-              harga LIKE '%$keyword%' 
-              ");
+//ketika tombol cari di klik
+if (isset($_POST['cari'])) {
+  $pakaian = cari($_POST['keyword']);
 } else {
   $pakaian = query("SELECT * FROM pakaian");
 }
@@ -93,37 +85,42 @@ if (isset($_GET['cari'])) {
       <h3 class="center light grey-text text-darken-3">De' Paesyeon Store Products</h3>
       <div class="row"></div>
       <div class="row">
-        <div class="col s1"></div>
+        <div class="col s2"></div>
         <div class="col s8 brown lighten-2">
-          <form action="" method="GET">
-            <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off">
+          <form action="" method="POST">
+            <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off" autofocus class="keyword">
         </div>
         <div class="col s2">
-          <button class="btn brown lighten-2" type="submit" name="cari">Cari!</button>
+          <button class="btn brown lighten-2" type="submit" name="cari" class="tombol-cari" style="display:none;">Cari!</button>
         </div>
         </form>
         <div class="row"></div>
       </div>
-      <?php if (empty($pakaian)) : ?>
-        <tr>
-          <td colspan="5">
-            <h3>Data tidak ditemukan</h3>
-          </td>
-        </tr>
-      <?php else : ?>
-        <ul class="collection with-header">
-          <li class="collection-header">
-            <h4>Klik to view more info!</h4>
-          </li>
-          <?php foreach ($pakaian as $row) : ?>
-            <p class="nama">
-              <li class="collection-item"><a href="php/detail.php?id=<?= $row['id'] ?>">
-                  <?= $row["nama_produk"] ?>
-                </a></li>
-            </p>
-          <?php endforeach; ?>
-        </ul>
-      <?php endif; ?>
+      <ul class="collection with-header">
+        <li class="collection-header">
+          <h4>Klik to view more info!</h4>
+        </li>
+
+        <div class="container-product">
+          <?php if (empty($pakaian)) : ?>
+            <tr>
+              <td colspan="5">
+                <h3>Data tidak ditemukan</h3>
+              </td>
+            </tr>
+          <?php else : ?>
+            <?php foreach ($pakaian as $row) : ?>
+              <p class="nama">
+                <li class="collection-item"><a href="php/detail.php?id=<?= $row['id'] ?>">
+                    <?= $row["nama_produk"] ?>
+                  </a></li>
+              </p>
+            <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+    </div>
+    </ul>
+
     </div>
   </section>
   <!-- akhir product -->
@@ -200,6 +197,7 @@ if (isset($_GET['cari'])) {
     M.Parallax.init(parallax);
   </script>
 
+  <script src="js/script.js"></script>
 </body>
 
 </html>
