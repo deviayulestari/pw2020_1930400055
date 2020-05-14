@@ -60,6 +60,33 @@ if (isset($_GET['cari'])) {
   </div>
   <!-- akhir navbar -->
 
+  <!-- slider -->
+  <div class="slider">
+    <div class="container">
+      <ul class="slides">
+        <li>
+          <img src="assets/img/slider/1.jfif">
+          <div class="caption center-align">
+            <h3 class="light red-text text-accent-2">"What you wear is how you present yourself to the world, especially today, when human contacts are so quick. Fashion is instant language." —Miuccia Prada</h3>
+          </div>
+        </li>
+        <li>
+          <img src="assets/img/slider/2.jfif">
+          <div class="caption center-align">
+            <h3 class="light red-text text-accent-2">"Trendy is the last stage before tacky." —Karl Lagerfeld</h3>
+          </div>
+        </li>
+        <li>
+          <img src="assets/img/slider/3.jfif">
+          <div class="caption center-align">
+            <h3 class="light red-text text-accent-2">"Fashion you can buy, but style you possess. The key to style is learning who you are, which takes years. There's no how-to road map to style. It's about self expression and, above all, attitude." —Iris Apfel</h3>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- akhir slider -->
+
   <!-- product -->
   <section id="product" class="product brown lighten-4 scrollspy">
     <div class="container center">
@@ -118,6 +145,14 @@ if (isset($_GET['cari'])) {
     const scroll = document.querySelectorAll('.scrollspy');
     M.ScrollSpy.init(scroll, {
       scrollOffset: 50
+    });
+
+    const slider = document.querySelectorAll('.slider');
+    M.Slider.init(slider, {
+      indicators: false,
+      height: 650,
+      transition: 600,
+      interval: 3000
     });
   </script>
 
