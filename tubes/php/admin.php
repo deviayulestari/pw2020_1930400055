@@ -8,17 +8,9 @@ if (!isset($_SESSION["username"])) {
 
 require 'functions.php';
 
-if (isset($_GET['cari'])) {
-  $keyword = $_GET['keyword'];
-  $pakaian = query("SELECT * FROM pakaian WHERE
-              foto LIKE '%$keyword%' OR
-              nama_produk LIKE '%$keyword%' OR
-              brand LIKE '%$keyword%' OR
-              ukuran LIKE '%$keyword%' OR
-              warna LIKE '%$keyword%' OR
-              stok_tersedia LIKE '%$keyword%' OR
-              harga LIKE '%$keyword%' 
-              ");
+//ketika tombol cari di klik
+if (isset($_POST['cari'])) {
+  $pakaian = cari($_POST['keyword']);
 } else {
   $pakaian = query("SELECT * FROM pakaian");
 }
@@ -76,11 +68,11 @@ if (isset($_GET['cari'])) {
   <div class="row">
     <div class="col s3"></div>
     <div class="col s5 brown lighten-2">
-      <form action="" method="GET">
-        <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off">
+      <form action="" method="POST">
+        <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off" class="keyword">
     </div>
     <div class="col s2">
-      <button class="btn brown lighten-2" type="submit" name="cari">Cari!</button>
+      <button class="btn brown lighten-2" type="submit" name="cari" class="tombol-cari" style="display:none;">Cari!</button>
     </div>
     </form>
   </div>
@@ -88,49 +80,53 @@ if (isset($_GET['cari'])) {
     <button class="btn brown lighten-4"><a href="tambah.php">Tambah Data</a></button>
   </div>
   <div class="admin">
-    <table class="tabel">
-      <tr bgcolor="#d7ccc8">
-        <th>#</th>
-        <th>Ubah</th>
-        <th>Hapus</th>
-        <th>Foto</th>
-        <th>Nama Produk</th>
-        <th>Brand</th>
-        <th>Ukuran</th>
-        <th>Warna</th>
-        <th>Stok Tersedia</th>
-        <th>Harga</th>
-      </tr>
-      <?php if (empty($pakaian)) : ?>
-        <tr>
-          <td colspan="5">
-            <h3>Data tidak ditemukan</h3>
-          </td>
+    <div class="container-admin">
+      <table class="tabel">
+        <tr bgcolor="#d7ccc8">
+          <th>#</th>
+          <th>Ubah</th>
+          <th>Hapus</th>
+          <th>Foto</th>
+          <th>Nama Produk</th>
+          <th>Brand</th>
+          <th>Ukuran</th>
+          <th>Warna</th>
+          <th>Stok Tersedia</th>
+          <th>Harga</th>
         </tr>
-      <?php else : ?>
-        <?php $i = 1; ?>
-        <?php foreach ($pakaian as $p) : ?>
+        <?php if (empty($pakaian)) : ?>
           <tr>
-            <td><?= $i; ?></td>
-            <td>
-              <button class="btn brown lighten-4"> <a href="../php/ubah.php?id=<?= $p['id']; ?>">Ubah</button></a>
+            <td colspan="5">
+              <h3>Data tidak ditemukan</h3>
             </td>
-            <td>
-              <button class="btn brown lighten-4"><a href="../php/hapus.php?id=<?= $p['id']; ?>" onclick="return confirm('Hapus Data??')">Hapus</button></a>
-            </td>
-            <td><img src="../assets/img/<?= $p['foto']; ?>" width="150px"></td>
-            <td><?= $p['nama_produk']; ?></td>
-            <td><?= $p['brand']; ?></td>
-            <td><?= $p['ukuran']; ?></td>
-            <td><?= $p['warna']; ?></td>
-            <td><?= $p['stok_tersedia']; ?></td>
-            <td><?= $p['harga']; ?></td>
           </tr>
-          <?php $i++; ?>
-        <?php endforeach; ?>
-      <?php endif; ?>
-    </table>
+        <?php else : ?>
+          <?php $i = 1; ?>
+          <?php foreach ($pakaian as $p) : ?>
+            <tr>
+              <td><?= $i; ?></td>
+              <td>
+                <button class="btn brown lighten-4"> <a href="../php/ubah.php?id=<?= $p['id']; ?>">Ubah</button></a>
+              </td>
+              <td>
+                <button class="btn brown lighten-4"><a href="../php/hapus.php?id=<?= $p['id']; ?>" onclick="return confirm('Hapus Data??')">Hapus</button></a>
+              </td>
+              <td><img src="../assets/img/<?= $p['foto']; ?>" width="150px"></td>
+              <td><?= $p['nama_produk']; ?></td>
+              <td><?= $p['brand']; ?></td>
+              <td><?= $p['ukuran']; ?></td>
+              <td><?= $p['warna']; ?></td>
+              <td><?= $p['stok_tersedia']; ?></td>
+              <td><?= $p['harga']; ?></td>
+            </tr>
+            <?php $i++; ?>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </table>
+    </div>
   </div>
+
+  <script src="../js/scriptAdmin.js"></script>
 </body>
 
 </html>
