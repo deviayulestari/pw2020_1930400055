@@ -86,20 +86,29 @@ section{
 }
 
 /* detail.php */
-.detail{
-  background-color: #ff5252;
-}
-.container-detail{
-  color : #212121;
-  margin-left: 50px;
+.body-detail{
+background-color: lavender;
 }
 
-.keterangan {
+.detail .container {
+  
+  background-color: #f5f5f5;
+}
+
+.detail .header{
+  font-family: Kaushan Script;
+  padding-top: 35px;
+}
+
+.detail .card{
+  margin: 50px;
+  height: 420px;
+  margin-top: 25px;
+}
+
+.detail .card-content{
   font-family: Libre Baskerville;
-}
-
-.gambar img{
-  margin-top : 50px;
+  font-size: 20px;
 }
 
 /* admin */
