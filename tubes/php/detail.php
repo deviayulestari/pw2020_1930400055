@@ -39,24 +39,31 @@ $p = query("SELECT * FROM pakaian WHERE id = $id")[0];
     <title>De' Paesyeon Store</title>
 </head>
 
-<body bgcolor="lavender">
-    <div class="container-detail">
-        <div class="gambar">
-            <img width="200px" src="../assets/img/<?= $p["foto"]; ?>">
+<body class="body-detail">
+    <div class="container ">
+        <div class="detail">
+            <h2 class="header center">Detail Product</h2>
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img height="420px" src="../assets/img/<?= $p["foto"]; ?>">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p><b>Nama Produk :</b> <br><?= $p["nama_produk"]; ?></p>
+                        <p><b>Ukuran :</b> <br><?= $p["ukuran"]; ?></p>
+                        <p><b>Warna :</b> <br><?= $p["warna"]; ?></p>
+                        <p><b>Stok tersedia:</b> <br><?= $p["stok_tersedia"]; ?></p>
+                        <p><b>Harga :</b> <br><?= $p["harga"]; ?></p>
+                    </div>
+                    <div class="card-action grey darken-3">
+                        <button class="btn waves-effect waves-light grey darken-4 red-text text-accent-1" type="submit" name="action"><a href="../index.php">Back</a>
+                            <a href="../index.php"></a>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="keterangan">
-            <p><b>Nama Produk :</b> <br><?= $p["nama_produk"]; ?></p>
-            <p><b>Ukuran :</b> <br><?= $p["ukuran"]; ?></p>
-            <p><b>Warna :</b> <br><?= $p["warna"]; ?></p>
-            <p><b>Stok tersedia:</b> <br><?= $p["stok_tersedia"]; ?></p>
-            <p><b>Harga :</b> <br><?= $p["harga"]; ?></p>
-        </div>
-
-        <button class="btn waves-effect waves-light grey darken-4 red-text text-accent-1" type="submit" name="action"><a href="../index.php">Kembali</a>
-            <i class="material-icons right"><a href="../index.php">exit_to_app</a></i>
-        </button>
     </div>
-
 </body>
 
 </html>
