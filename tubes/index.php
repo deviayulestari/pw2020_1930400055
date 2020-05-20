@@ -28,13 +28,13 @@ if (isset($_POST['cari'])) {
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <!-- my fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Shrikhand|Lobster|Libre+Baskerville|Kaushan+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Shrikhand|Dancing+Script|Lobster|Libre+Baskerville|Kaushan+Script&display=swap" rel="stylesheet">
 
 
   <title>De' Paesyeon Store</title>
 </head>
 
-<body id="home" class="scrollspy">
+<body id="home" class="body-index scrollspy">
 
   <!-- navbar -->
   <div class="navbar-fixed">
@@ -42,6 +42,7 @@ if (isset($_POST['cari'])) {
       <div class="container">
         <div class="nav-wrapper">
           <a href="#home" class="brand-logo">De' Paesyeon Store</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a class="brown-text text-lighten-4" href="#product">Product</a></li>
             <li><a href="php/login.php" class="btn  red accent-2 grey-text text-darken-4">Admin</a></li>
@@ -50,6 +51,12 @@ if (isset($_POST['cari'])) {
       </div>
     </nav>
   </div>
+
+  <!-- sidenav-->
+  <ul class="sidenav" id="mobile-nav">
+    <li><a href="#product">Product</a></li>
+    <li><a href="php/login.php" class="btn  red accent-2 grey-text text-darken-4">Admin</a></li>
+  </ul>
   <!-- akhir navbar -->
 
   <!-- slider -->
@@ -85,42 +92,67 @@ if (isset($_POST['cari'])) {
       <h3 class="center light grey-text text-darken-3">De' Paesyeon Store Products</h3>
       <div class="row"></div>
       <div class="row">
-        <div class="col s2"></div>
-        <div class="col s8 brown lighten-2">
-          <form action="" method="POST">
-            <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off" autofocus class="keyword">
-        </div>
-        <div class="col s2">
+        <div class="col s1"></div>
+        <form action="" method="POST">
+          <div class="col s10">
+            <div class="card-panel">
+              <div class="row">
+                <div class="col s1"><i class="material-icons prefix">search</i></div>
+                <div class="col s11"><input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off" autofocus class="keyword"></div>
+              </div>
+            </div>
+          </div>
           <button class="btn brown lighten-2" type="submit" name="cari" class="tombol-cari" style="display:none;">Cari!</button>
-        </div>
         </form>
-        <div class="row"></div>
+        <div class="col s1"></div>
       </div>
-      <ul class="collection with-header">
-        <li class="collection-header">
-          <h4>Klik to view more info!</h4>
-        </li>
 
-        <div class="container-product">
-          <?php if (empty($pakaian)) : ?>
-            <tr>
-              <td colspan="5">
-                <h3>Data tidak ditemukan</h3>
-              </td>
-            </tr>
-          <?php else : ?>
-            <?php foreach ($pakaian as $row) : ?>
-              <p class="nama">
-                <li class="collection-item"><a href="php/detail.php?id=<?= $row['id'] ?>">
-                    <?= $row["nama_produk"] ?>
-                  </a></li>
-              </p>
+      <h4 class="center light grey-text text-darken-3">List Version</h4>
+      <div class="container-product">
+        <div class="row s8">
+          <ul class="collection with-header">
+            <li class="collection-header">
+              <h2 class="judul brown-text text-darken-4">Klik to view more info!</h2>
+            </li>
+            <?php if (empty($pakaian)) : ?>
+              <tr>
+                <td colspan="5">
+                  <h3>Data tidak ditemukan</h3>
+                </td>
+              </tr>
+            <?php else : ?>
+              <?php foreach ($pakaian as $row) : ?>
+                <p class="nama">
+                  <li class="collection-item"><a href="php/detail.php?id=<?= $row['id'] ?>" class="nama brown-text text-darken-4">
+                      <?= $row["nama_produk"] ?>
+                    </a></li>
+                </p>
+              <?php endforeach; ?>
+          </ul>
+
+          <!-- catalogue version -->
+          <h4 class="center light grey-text text-darken-3">Catalogue Version</h4>
+          <?php foreach ($pakaian as $row) : ?>
+            <div class="row">
+              <div class="col m4 s4">
+                <div class="card brown darken-4">
+
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img src="assets/img/<?= $row['foto']; ?>" width="250px" height="400px">
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title activator white-text">
+                      <h6><?= $row["nama_produk"] ?></h6>
+                    </span>
+                    <p><a href="php/detail.php?id=<?= $row['id'] ?>" class="white-text now">Buy Now!</a></p>
+                  </div>
+                </div>
+              </div>
             <?php endforeach; ?>
-      </ul>
-    <?php endif; ?>
-    </div>
-    </ul>
-
+          <?php endif; ?>
+            </div>
+        </div>
+      </div>
     </div>
   </section>
   <!-- akhir product -->
@@ -195,6 +227,9 @@ if (isset($_POST['cari'])) {
 
     const parallax = document.querySelectorAll('.parallax');
     M.Parallax.init(parallax);
+
+    const sidenav = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(sidenav);
   </script>
 
   <script src="js/script.js"></script>

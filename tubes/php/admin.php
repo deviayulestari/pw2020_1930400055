@@ -33,66 +33,63 @@ if (isset($_POST['cari'])) {
   <link href="https://fonts.googleapis.com/css?family=Shrikhand|Lobster|Libre+Baskerville|Kaushan+Script&display=swap" rel="stylesheet">
 
   <title>Admin</title>
-  <style>
-    .add {
-      padding: 25px 200px 25px;
-
-    }
-
-    .tabel {
-      width: 1250px;
-      margin: 10px auto;
-    }
-  </style>
-  </style>
 </head>
 
-<body bgcolor="lavender">
+<body class="body-admin">
   <!-- navbar -->
-  <div class="navbar-fixed">
+  <div class=" navbar-fixed">
     <nav class="brown darken-4">
       <div class="container">
         <div class="nav-wrapper">
           <a href="#home" class="brand-logo">De' Paesyeon Store</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
+            <li><a class="brown-text text-lighten-4" href="../index.php">Home</a></li>
+            <li><a href="tambah.php" class="btn brown lighten-1">Tambah Data</a></li>
             <li><a href="logout.php" class="btn  red accent-2 grey-text text-darken-4">Log Out</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
+  <!-- sidenav-->
+  <ul class="sidenav" id="mobile-nav">
+    <li><a href="../index.php">Home</a></li>
+    <li><a href="tambah.php" class="btn brown lighten-1">Tambah Data</a></li>
+    <li><a href="logout.php" class="btn  red accent-2 grey-text text-darken-4">Log Out</a></li>
+  </ul>
   <!-- akhir navbar -->
 
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row">
-    <div class="col s3"></div>
-    <div class="col s5 brown lighten-2">
-      <form action="" method="POST">
-        <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off" class="keyword">
-    </div>
-    <div class="col s2">
-      <button class="btn brown lighten-2" type="submit" name="cari" class="tombol-cari" style="display:none;">Cari!</button>
-    </div>
-    </form>
-  </div>
-  <div class="add">
-    <button class="btn brown lighten-4"><a href="tambah.php">Tambah Data</a></button>
-  </div>
   <div class="admin">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+      <div class="col s2"></div>
+      <div class="col s8">
+        <form action="" method="POST">
+          <div class="card-panel">
+            <input type="text" name="keyword" size="50" autofocus placeholder="Apa yang ingin anda cari?" autocomplete="off" class="keyword">
+          </div>
+      </div>
+      <div class="col s2">
+        <button class="btn brown lighten-2" type="submit" name="cari" class="tombol-cari" style="display:none;">Cari!</button>
+      </div>
+      </form>
+    </div>
+
     <div class="container-admin">
-      <table class="tabel">
-        <tr bgcolor="#d7ccc8">
-          <th>#</th>
-          <th>Ubah</th>
-          <th>Hapus</th>
-          <th>Foto</th>
-          <th>Nama Produk</th>
-          <th>Brand</th>
-          <th>Ukuran</th>
-          <th>Warna</th>
-          <th>Stok Tersedia</th>
-          <th>Harga</th>
+      <table class="tabel centered">
+        <tr bgcolor="#8d6e63">
+          <th class="center">#</th>
+          <th class="center">Ubah</th>
+          <th class="center">Hapus</th>
+          <th class="center">Foto</th>
+          <th class="center">Nama Produk</th>
+          <th class="center">Brand</th>
+          <th class="center">Ukuran</th>
+          <th class="center">Warna</th>
+          <th class="center">Stok Tersedia</th>
+          <th class="center">Harga</th>
         </tr>
         <?php if (empty($pakaian)) : ?>
           <tr>
@@ -106,10 +103,10 @@ if (isset($_POST['cari'])) {
             <tr>
               <td><?= $i; ?></td>
               <td>
-                <button class="btn brown lighten-4"> <a href="../php/ubah.php?id=<?= $p['id']; ?>">Ubah</button></a>
+                <a href="ubah.php?id=<?= $p['id']; ?>" class="btn brown lighten-1">Ubah</a>
               </td>
               <td>
-                <button class="btn brown lighten-4"><a href="../php/hapus.php?id=<?= $p['id']; ?>" onclick="return confirm('Hapus Data??')">Hapus</button></a>
+                <a href="hapus.php?id=<?= $p['id']; ?>" onclick="return confirm('Hapus Data??')" class=" btn brown lighten-1">Hapus</a>
               </td>
               <td><img src="../assets/img/<?= $p['foto']; ?>" width="150px"></td>
               <td><?= $p['nama_produk']; ?></td>
@@ -127,6 +124,12 @@ if (isset($_POST['cari'])) {
   </div>
 
   <script src="../js/scriptAdmin.js"></script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="../js/materialize.min.js"></script>
+  <script>
+    const sidenav = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(sidenav);
+  </script>
 </body>
 
 </html>

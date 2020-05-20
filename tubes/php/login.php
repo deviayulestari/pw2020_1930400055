@@ -31,13 +31,13 @@ if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $cek_user = mysqli_query(koneksi(), "SELECT * FROM user WHERE username = '$username'");
-  //mencocokan USERNAM dan PASSWORD 
+  //mencocokan USERNAME dan PASSWORD 
   if (mysqli_num_rows($cek_user) > 0) {
     $row = mysqli_fetch_assoc($cek_user);
     if (password_verify($password, $row['password'])) {
       $_SESSION['username'] = $_POST['username'];
       $_SESSION['hash'] = hash('sha256', $row['id'], false);
-      //jika remember me decentang
+      //jika remember me dicentang
       if (isset($_POST['remember'])) {
         setcookie('hash', $hash, time() + 60 * 60 * 24);
         $hash =  hash('sha256', $row['id']);
@@ -67,72 +67,36 @@ if (isset($_POST['submit'])) {
   <!-- my fonts -->
   <link href="https://fonts.googleapis.com/css?family=Shrikhand|Lobster|Libre+Baskerville|Kaushan+Script&display=swap" rel="stylesheet">
 
+  <!-- my css -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+
   <title>Login</title>
-  <style>
-    .container-login {
-      height: 255px;
-      width: 350px;
-      background-color: lavender;
-      color: black;
-      padding: 20px;
-      margin: 50px auto;
-      border-radius: 35px;
-    }
-
-    h3 {
-      text-align: center;
-      font-size: 40px;
-      margin: 15px auto;
-      font-family: Shrikhand;
-    }
-
-    label {
-      padding-right: 40px;
-      font-size: 18px;
-      font-family: Libre Baskerville;
-    }
-
-    .tombol {
-      margin: 15px auto;
-      text-align: center;
-    }
-
-    .registrasi {
-      font-size: 15px;
-      font-family: Libre Baskerville;
-      text-align: center;
-    }
-  </style>
 </head>
 
-<body>
-  <div class="container-login">
-    <h3>LOGIN</h3>
+<body class="body-login">
+  <div class="login">
+    <h3>Login</h3>
     <form action="" method="POST">
       <?php if (isset($error)) : ?>
         <p style="color:red; font-style: italic;">Username atau password salah</p>
       <?php endif; ?>
-      <table>
-        <tr>
-          <td><label for="username">Username</label></td>
-          <td>:</td>
-          <td><input type="text" name="username"></td>
-        </tr>
-        <tr>
-          <td><label for="password">Password</label></td>
-          <td>:</td>
-          <td><input type="password" name="password"></td>
-        </tr>
-      </table>
+      <div class="input-group">
+        <input type="text" name="username" required>
+        <label for="username">Username : </label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" required>
+        <label for="password">Password : </label>
+      </div>
       <div class="remember">
         <input type="checkbox" name="remember">
         <label for="remember">Remember me</label>
       </div>
-      <div class="tombol">
-        <button type="submit" name="submit">LOGIN</button>
+      <div class="input-group">
+        <input type="submit" name="submit" value="login">
       </div>
     </form>
-    <div class="registrasi">
+    <div class="regis">
       <p>Belum punya akun? Registrasi <a href="registrasi.php">Disini</a></p>
     </div>
   </div>

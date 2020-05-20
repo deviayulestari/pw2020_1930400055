@@ -56,8 +56,9 @@ $p = query("SELECT * FROM pakaian WHERE id = $id")[0];
                         <p><b>Harga :</b> <br><?= $p["harga"]; ?></p>
                     </div>
                     <div class="card-action grey darken-3">
-                        <button class="btn waves-effect waves-light grey darken-4 red-text text-accent-1" type="submit" name="action"><a href="../index.php">Back</a>
-                            <a href="../index.php"></a>
+                        <button class="btn waves-effect waves-light grey lighten-2" type="submit"><a href="#">Buy!</a>
+                        </button>
+                        <button class="btn waves-effect waves-light grey lighten-2" type="submit" name="action"><a href="../index.php">Back</a>
                         </button>
                     </div>
                 </div>
