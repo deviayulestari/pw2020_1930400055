@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 12 Apr 2020 pada 04.45
+-- Generation Time: 20 Mei 2020 pada 21.19
 -- Versi Server: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -51,12 +51,33 @@ INSERT INTO `pakaian` (`id`, `foto`, `nama_produk`, `brand`, `ukuran`, `warna`, 
 (7, 'levis_jeans.jpg', 'Slim Taper Fit Jeans', 'Levis', '27, 28, 29, 30, 31, 32, 34, 36', 'Saint Lime ADV', 543, 849900),
 (8, 'lois_kaos.jpg', 'Kaos Raglan Jersey', 'Lois', 'S, M, L, XL', 'Dominant White', 475, 240500),
 (9, 'lois_kemeja.jpg', 'Kemeja Hoodie', 'Lois', 'S, M, L, XL', 'Black', 632, 410500),
-(10, 'rubylicius_dress.jpg', 'Faelin Maxi Dress', 'Rubylicious', 'All size fit to L', 'Milo, Maroon, Blue', 573, 115000),
-(11, 'rubylicius_tutu.jpg', 'Diamond Tutu Maxi Skirt', 'Rubylicious', 'All size fit to L', 'Black', 358, 145000),
-(12, 'rubylicius_skirt.jpg', 'Sahapa Skirt', 'Rubylicious', 'All size fit to L', 'Dark Grey, Light Grey, Cream', 643, 109000),
+(10, 'rubylicious_dress.jpg', 'Faelin Maxi Dress', 'Rubylicious', 'All size fit to L', 'Milo, Maroon, Blue', 573, 115000),
+(11, 'rubylicious_tutu.jpg', 'Diamond Tutu Maxi Skirt', 'Rubylicious', 'All size fit to L', 'Black', 358, 145000),
+(12, 'rubylicious_skirt.jpg', 'Sahapa Skirt', 'Rubylicious', 'All size fit to L', 'Dark Grey, Light Grey, Cream', 643, 109000),
 (13, 'uniqlo_pants.jpg', 'Men U Cotton Linen Wide-Fit Tapered Pants', 'Uniqlo', 'S, M, L, XL', 'Black, Navy, Brown', 609, 472500),
 (14, 'uniqlo_skirt.jpg', 'Women Twist Pleated Long Skirt', 'Uniqlo', 'XS, S, M, L, XXL', 'Off-White, Black, Natural, Blue', 923, 630500),
 (15, 'zara_atasan.jpg', 'Atasan Cropped Organza', 'Zara', 'S, M, L', 'Grey', 876, 479900);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `password` varchar(256) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(2, 'devi', '$2y$10$ThBx4GaAlqTWOBQOfnx12.tfEZ7gv8o7NpmtMgOMO9ioqfTREjffK'),
+(3, 'deva', '$2y$10$jvwCsvi7aG6IPPb.z4I8O.aktceiaz/teT1ayGqfOFyH6I6fLBNse'),
+(4, 'admin', '$2y$10$130CCn26sX1EtAIqFGE9YO4KsZGOLtgIkKVovFupnFUcHiTUEyrA6');
 
 --
 -- Indexes for dumped tables
@@ -69,6 +90,12 @@ ALTER TABLE `pakaian`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -77,6 +104,11 @@ ALTER TABLE `pakaian`
 --
 ALTER TABLE `pakaian`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
